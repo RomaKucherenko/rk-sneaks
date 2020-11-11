@@ -1,0 +1,77 @@
+.header {
+  &__row {
+    background-color: #E7D076;
+  }
+
+  //Логотип
+  &__logo {
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  //Див для кнопок Избранное/Корзина
+  &__buttons {
+    text-align: center;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    //Центрирование кнопок Избранное/Корзина
+    > .buttons-centring {
+      padding-top: 15px;
+
+      @media(max-width: 376px) {
+        margin-right: -15px;
+      }
+    }
+
+    //Кнопка Корзина
+    .header-cart {
+      background-color: transparent;
+
+      border: 1px solid black;
+      border-radius: 30px;
+
+      box-sizing: border-box;
+      margin-left: 10px;
+
+      width: 150px;
+      height: 50px;
+
+      cursor: pointer;
+
+      @media(max-width: 376px) {
+        margin-left: 5px;
+      }
+
+      //Отступы и рамка между Корзиной и Избранным
+      img{
+        border-left: 1px solid black;
+        padding-left: 4px;
+      }
+      span {
+        margin-right: 4px;
+      }
+    }
+    //Кнопка Избранное
+    .header-favourites{
+      //Обнуление стилей кнопки
+      padding: 0;
+      border: none;
+      font: inherit;
+      color: inherit;
+      background-color: transparent;
+      cursor: pointer;
+
+      img{
+        width: 30px;
+        height: 30px;
+      }
+  }
+}
+
+}

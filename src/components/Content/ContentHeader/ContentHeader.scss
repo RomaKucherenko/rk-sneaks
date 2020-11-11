@@ -1,0 +1,150 @@
+.content-header {
+  background-color: lightgoldenrodyellow;
+
+  &__gender-buttons{
+    button{
+      margin-right: 5px;
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+
+  .header__top {
+    margin-bottom: 20px;
+
+    //Обнуление свойств всех кнопок
+  }
+
+  button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  //Адаптивка search-input
+  input {
+    @media(max-width: 576px) {
+      width: 120px;
+      @media(max-width: 420px) {
+        width: 100px;
+        @media(max-width: 360px) {
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  .filters {
+    text-align: center;
+
+    .filters__list {
+
+      li {
+        display: inline-block; //Для того чтобы встали в рд
+        text-decoration: none;
+
+        position: relative; //Относительно li будет позиционирование
+
+        margin-right: 25px;
+
+        :hover .sub-filters__list,
+        :hover .sub-filters__list.size-list{ //Отображение под-меню при наведении
+          display: block;
+        }
+        :hover .sub-filters__list.cost-list {
+          display: flex;
+        }
+      }
+
+      .sub-filters__list {
+        display: none;
+
+        background-color: lightgoldenrodyellow;
+        color: black;
+
+        z-index: 1;
+
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        padding-top: 10px;
+
+        //Классы для позиционирования элементов
+        &.cost-list {
+          left: -70px;
+        }
+
+        &.type-list {
+          left: -35px;
+        }
+
+        &.size-list {
+          left: -30px;
+          width: 110px;
+          box-sizing: border-box;
+
+          .size-list__wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            color: #DFDE62;
+            font-weight: bold;
+
+            margin: 0 auto;
+
+            width: 90px;
+
+
+
+            .active {
+              color: goldenrod;
+
+            }
+            :hover{
+
+              color:#3C3180;
+            }
+
+            > div {
+              margin-right: 5px;
+            }
+
+            //Отменяем отступ у последнего элемента строки
+            > div:nth-child(4n) {
+              margin-right: 0px;
+            }
+
+          }
+        }
+      }
+
+
+      .sub-filters__item {
+
+        cursor: pointer;
+        input {
+          width: 100px;
+        }
+      }
+
+      .brand-list, .type-list {
+        .sub-filters__item{
+          margin-bottom: 5px;
+          &:hover {
+            background-color: #E7D076 !important;
+            color: #5C2C7B !important;
+          }
+          &.active {
+            background-color: #5C2C7B;
+            color: #E7D076;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.content-items {
+  background-color: lightgoldenrodyellow;
+
+  &__current-filters {
+
+    button {
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+
+      border: 1px solid gray;
+      border-radius: 20px;
+      background-color: transparent;
+
+      padding-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+
+      > img {
+
+        width: 15px;
+        height: 15px;
+
+        margin-bottom: 3px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__sort {
+
+    @media(max-width: 380px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .filters__list {
+      @media(max-width: 768px) {
+        padding-left: 0;
+      }
+
+      li {
+        display: inline-block; //Для того чтобы встали в рд
+        text-decoration: none;
+
+        position: relative; //Относительно li будет позиционирование
+
+        :hover .sub-filters__list {
+          display: block;
+        }
+      }
+
+      .sub-filters__list {
+        display: none;
+
+        background-color: lightgoldenrodyellow;
+        color: black;
+
+        z-index: 1;
+
+        position: absolute;
+        top: 0px;
+        left: 120px;
+        padding-left: 20px;
+        @media(max-width: 768px) {
+          padding-left: 0px;
+          padding-top: 5px;
+          top: 20px;
+          left: 20px;
+          @media(max-width: 768px) {
+
+          }
+        }
+
+
+        .sub-filters__item {
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .items-list {
+    margin-top: 20px;
+    &__item {
+      margin-bottom: 20px;
+      text-align: center;
+
+      img {
+
+        width: 250px;
+        height: 250px;
+      }
+
+
+      .item-info {
+
+        button {
+          padding: 0;
+          border: 1px solid black;
+          font: inherit;
+          color: inherit;
+          background-color: lightgoldenrodyellow;
+          cursor: pointer;
+        }
+
+        .item-info__colors {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+          img:not(:first-child){
+            border-left: 1px solid black;
+          }
+        }
+
+        .item-info__old-price {
+          margin-left: 10px;
+          color: red;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+
+  .show-more {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
