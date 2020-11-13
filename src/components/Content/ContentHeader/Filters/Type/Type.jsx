@@ -1,15 +1,33 @@
 import React from 'react';
+import classNames from "classnames";
 
-function Type(props) {
+const types = ["Беговые","Повседневные","Шиповки","Бутсы"]
+
+function Type({setTypeFilter, unsetTypeFilter, selectedTypes}) {
+    const onItemClick = (e) => {
+        let type = e.target.innerHTML
+
+        if (selectedTypes.includes(type)) {
+            unsetTypeFilter(type)
+        } else {
+            setTypeFilter(type)
+        }
+    }
+
+    const typesElements = types.map((type, index) => {
+        return <div
+            onClick={onItemClick}
+            key={`${index}__${type}`}
+            className={classNames("sub-filters__item", {
+                "active": selectedTypes.includes(type)
+            })}>{type}</div>
+    })
     return (
         <li>
             <div className="filters__item">Тип
                 <div className="sub-filters__list type-list">
 
-                    <div className="sub-filters__item">Беговые</div>
-                    <div className="sub-filters__item">Повседневные</div>
-                    <div className="sub-filters__item">Шиповки</div>
-                    <div className="sub-filters__item">Бутсы</div>
+                    {typesElements}
 
                 </div>
             </div>

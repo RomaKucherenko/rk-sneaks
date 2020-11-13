@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Cost from "./Cost/Cost";
-import Type from "./Type/Type";
 import Size from "./Size/Size";
 import BrandContainer from "./Brand/BrandContainer";
+import TypeContainer from "./Type/TypeContainer";
 
 function Filters({setBrandFilter, unsetBrandFilter}) {
     return (
@@ -12,7 +12,7 @@ function Filters({setBrandFilter, unsetBrandFilter}) {
                 <ul className="filters__list">
                     <BrandContainer/>
                     <Cost/>
-                    <Type/>
+                    <TypeContainer/>
                     <Size/>
                 </ul>
             </div>
