@@ -1,6 +1,11 @@
 import {connect} from "react-redux";
 import CurrentFilters from "./CurrentFilters";
-import {unsetBrandFilterAction, unsetGenderFilterAction, unsetTypeFilterAction} from "../../../../Redux/filtersReducer";
+import {
+    unsetBrandFilterAction,
+    unsetCostFilterAction,
+    unsetGenderFilterAction, unsetSizeFilterAction,
+    unsetTypeFilterAction
+} from "../../../../Redux/filtersReducer";
 
 const mapStateToProps = state => {
     return {
@@ -13,12 +18,20 @@ const mapDispatchToProps = dispatch => {
         unsetBrandFilter:(brand) => {
             dispatch(unsetBrandFilterAction(brand))
         },
+        unsetTypeFilter:(type) => {
+            dispatch(unsetTypeFilterAction(type))
+        },
         unsetGenderFilter:() => {
             dispatch(unsetGenderFilterAction())
         },
-        unsetTypeFilter:() => {
-            dispatch(unsetTypeFilterAction())
+
+        unsetCostFilter:() => {
+            dispatch(unsetCostFilterAction())
+        },
+        unsetSizeFilter:(size) => {
+            dispatch(unsetSizeFilterAction(size))
         }
+
     }
 }
 

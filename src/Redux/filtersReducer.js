@@ -12,8 +12,8 @@ const UNSET_COST = `filter/UNSET_COST`
 const SET_TYPE = `filter/SET_TYPE`
 const UNSET_TYPE = `filter/UNSET_TYPE`
 
-const SET_SIZES = `filter/SET_SIZES`
-const UNSET_SIZES = `filter/UNSET_SIZES`
+const SET_SIZE = `filter/SET_SIZE`
+const UNSET_SIZE = `filter/UNSET_SIZE`
 
 let initialState = {
     gender: null,//string
@@ -71,6 +71,19 @@ const filtersReducer = (state = initialState, action) => {
                 ...state,
                 cost: {to: null, from:null}
             }
+
+        case SET_SIZE:
+            return {
+                ...state,
+                sizes: [...state.sizes, action.size]
+            }
+        case UNSET_SIZE:
+            return {
+                ...state,
+                sizes: deleteItemFromArray([...state.sizes], action.size)
+            }
+
+
         default:
             return state
     }
@@ -85,9 +98,11 @@ export const unsetBrandFilterAction = (brand) => ({type: UNSET_BRAND, brand})
 export const setTypeFilterAction = (typeValue) => ({type: SET_TYPE, typeValue})
 export const unsetTypeFilterAction = (typeValue) => ({type: UNSET_TYPE, typeValue})
 
-export const setCostFilterAction = (to, from) => ({type: SET_TYPE, to, from})
-export const unsetCostFilterAction = () => ({type: UNSET_TYPE})
+export const setCostFilterAction = (from, to) => ({type: SET_COST, to, from})
+export const unsetCostFilterAction = () => ({type: UNSET_COST})
 
+export const setSizeFilterAction = (size) => ({type: SET_SIZE, size})
+export const unsetSizeFilterAction = (size) => ({type: UNSET_SIZE, size})
 
 
 

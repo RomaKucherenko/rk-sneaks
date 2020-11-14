@@ -5,7 +5,7 @@ import Size from "./Size/Size";
 import BrandContainer from "./Brand/BrandContainer";
 import TypeContainer from "./Type/TypeContainer";
 
-function Filters({setBrandFilter, unsetBrandFilter}) {
+const Filters = (props) => {
     return (
         <div className="row content-header__filters">
             <div className="col filters">

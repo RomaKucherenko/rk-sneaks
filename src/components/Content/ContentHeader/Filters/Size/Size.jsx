@@ -1,24 +1,43 @@
 import React from 'react';
+import classNames from "classnames";
+import {setSizeFilterAction, unsetSizeFilterAction} from "../../../../../Redux/filtersReducer";
+import {connect} from "react-redux";
 
-function Size(props) {
+const sizes = []
+
+for (let i = 35; i <= 46; i++) {
+    sizes.push(i)
+}
+
+
+const Size = ({selectedSizes, unsetSizeFilter, setSizeFilter}) => {
+    const onItemClick = (e) => {
+        let size = e.target.innerHTML
+
+        if (selectedSizes.includes(size)) {
+            unsetSizeFilter(size)
+        } else {
+            setSizeFilter(size)
+        }
+    }
+
+    const sizeElements = sizes.map((size, index) => {
+        return <div
+            onClick={onItemClick}
+            key={`${index}__${size}`}
+            className={classNames("sub-filters__item", {
+                //Важный момент `${size}` - строка, size - число
+                "active": selectedSizes.includes(`${size}`)
+            })}>{size}</div>
+    })
+
     return (
         <li>
             <div className="filters__item">Размер
                 <div className="sub-filters__list size-list">
 
                     <div className="size-list__wrapper">
-                        <div className="sub-filters__item active">35</div>
-                        <div className="sub-filters__item active">36</div>
-                        <div className="sub-filters__item active">37</div>
-                        <div className="sub-filters__item active">38</div>
-                        <div className="sub-filters__item">39</div>
-                        <div className="sub-filters__item">40</div>
-                        <div className="sub-filters__item">41</div>
-                        <div className="sub-filters__item">42</div>
-                        <div className="sub-filters__item">43</div>
-                        <div className="sub-filters__item">44</div>
-                        <div className="sub-filters__item">45</div>
-                        <div className="sub-filters__item">46</div>
+                        {sizeElements}
                     </div>
 
                 </div>
@@ -27,4 +46,24 @@ function Size(props) {
     );
 }
 
-export default Size;
+const mapStateToProps = state => {
+    return {
+        selectedSizes: state.filters.sizes
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        unsetSizeFilter: (size) => {
+            dispatch(unsetSizeFilterAction(size))
+        },
+        setSizeFilter: (size) => {
+            dispatch(setSizeFilterAction(size))
+        }
+    }
+}
+
+
+const SizeContainer = connect(mapStateToProps, mapDispatchToProps)(Size)
+
+export default SizeContainer;
